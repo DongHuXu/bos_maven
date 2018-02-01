@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 开启开发模式 -->
+	<package name="basePackage"  extends="struts-default" abstract="true" >
+		<global-results>
+			<result name="error">/error/unauthorizedUrl.jsp</result>
+		</global-results>
+		<!-- struts2异常处理机制=>全局异常映射 -->
+		<global-exception-mappings>
+			<!-- 异常映射
+					出现了org.apache.shiro.authc.IncorrectCredentialsException异常,就跳转到名为error1的结果
+					出现了org.apache.shiro.authc.UnknownAccountException异常,就跳转到名为error2的结果
+			<exception-mapping result="error1" exception="org.apache.shiro.authc.IncorrectCredentialsException"></exception-mapping>
+			<exception-mapping result="error2" exception="org.apache.shiro.authc.UnknownAccountException"></exception-mapping>
+			 -->
+			 <!-- 但凡出现异常,都跳转到名为error的结果 -->
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
+	
+	</package>
+</struts>
